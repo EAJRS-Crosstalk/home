@@ -19,14 +19,9 @@ body {
   font-family: Inter, "Helvetica Neue", Arial, "Hiragino Sans", "Yu Gothic", sans-serif;
   color: var(--ink);
   background-color: var(--navy);
-  background-image:
-    radial-gradient(circle at 0 100%, transparent 22px, rgba(255,255,255,.06) 23px, rgba(255,255,255,.06) 27px, transparent 28px),
-    radial-gradient(circle at 60px 100%, transparent 22px, rgba(255,255,255,.06) 23px, rgba(255,255,255,.06) 27px, transparent 28px),
-    radial-gradient(circle at 0 40px, transparent 22px, rgba(255,255,255,.06) 23px, rgba(255,255,255,.06) 27px, transparent 28px),
-    radial-gradient(circle at 60px 40px, transparent 22px, rgba(255,255,255,.06) 23px, rgba(255,255,255,.06) 27px, transparent 28px),
-    radial-gradient(circle at 30px 70px, transparent 22px, rgba(255,255,255,.06) 23px, rgba(255,255,255,.06) 27px, transparent 28px),
-    radial-gradient(circle at 30px 10px, transparent 22px, rgba(255,255,255,.06) 23px, rgba(255,255,255,.06) 27px, transparent 28px);
-  background-size: 60px 60px;
+  background-image: url("assets/seigaiha_blue.png");
+  background-repeat: repeat;
+  background-size: 340px 340px;
 }
 a { color: inherit; }
 
