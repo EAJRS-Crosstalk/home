@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="EAJRS CrossTalk session site mockup: 翻字のその先へ" />
-  <title>翻字のその先へ | EAJRS CrossTalk</title>
+  <title data-ja="翻字のその先へ | EAJRS CrossTalk" data-en="Beyond Transliteration: Romanisation and Word Segmentation in Japanese Metadata | EAJRS CrossTalk">翻字のその先へ | EAJRS CrossTalk</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -12,7 +12,7 @@
     <a class="brand" href="#home" aria-label="EAJRS CrossTalk Home">
       <img src="assets/logo.png" alt="EAJRS CrossTalk 翻 ロゴ" />
       <span>
-        <strong>翻字のその先へ</strong>
+        <strong data-ja="翻字のその先へ" data-en="Beyond Transliteration">翻字のその先へ</strong>
         <small>EAJRS CrossTalk Session</small>
       </span>
     </a>
@@ -24,6 +24,9 @@
       <a href="#resources">Resources</a>
       <a href="#activities">Activities</a>
       <a href="#links">Links</a>
+      <button class="lang-toggle" type="button" id="lang-toggle" aria-label="Switch language / 言語切替">
+        <span class="lang-option" data-lang="ja">JA</span><span class="lang-sep">/</span><span class="lang-option" data-lang="en">EN</span>
+      </button>
     </nav>
   </header>
 
@@ -36,15 +39,15 @@
 
         <div class="hero-copy">
           <p class="eyebrow">EAJRS CrossTalk Session</p>
-          <h1>翻字のその先へ</h1>
-          <p class="subtitle">メタデータにおける<br />日本語のローマ字表記と分かち書き</p>
-          <p class="lead">
+          <h1 data-ja="翻字のその先へ" data-en="Beyond Transliteration">翻字のその先へ</h1>
+          <p class="subtitle" data-ja="メタデータにおける<br />日本語のローマ字表記と分かち書き" data-en="Romanisation and Word Segmentation<br />in Japanese Metadata">メタデータにおける<br />日本語のローマ字表記と分かち書き</p>
+          <p class="lead" data-ja="日本語資料を世界へつなぐために、ローマ字表記、分かち書き、検索・発見性、そしてメタデータの相互運用性を横断して考えるクロストークセッションです。" data-en="A CrossTalk session exploring romanisation, word segmentation, discoverability, and metadata interoperability &mdash; connecting Japanese-language resources to the world.">
             日本語資料を世界へつなぐために、ローマ字表記、分かち書き、検索・発見性、
             そしてメタデータの相互運用性を横断して考えるクロストークセッションです。
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#activities">Activitiesを見る</a>
-            <a class="button ghost" href="#resources">Resourcesへ</a>
+            <a class="button primary" href="#activities" data-ja="Activitiesを見る" data-en="View Activities">Activitiesを見る</a>
+            <a class="button ghost" href="#resources" data-ja="Resourcesへ" data-en="Go to Resources">Resourcesへ</a>
           </div>
         </div>
       </div>
@@ -61,27 +64,27 @@
     <section id="resources" class="section section-light">
       <div class="section-heading">
         <p class="kicker">Resources</p>
-        <h2>資料と実務リソース</h2>
-        <p>セッションで扱う論点を、実務で参照しやすい形にまとめます。</p>
+        <h2 data-ja="資料と実務リソース" data-en="Resources for Practice">資料と実務リソース</h2>
+        <p data-ja="セッションで扱う論点を、実務で参照しやすい形にまとめます。" data-en="Key topics from the session, organised for easy reference in day-to-day practice.">セッションで扱う論点を、実務で参照しやすい形にまとめます。</p>
       </div>
 
       <div class="card-grid">
         <article class="card">
           <span class="card-no">01</span>
           <h3>Romanisation</h3>
-          <p>日本語のローマ字表記に関する規則、事例、比較資料。</p>
+          <p data-ja="日本語のローマ字表記に関する規則、事例、比較資料。" data-en="Rules, examples, and comparative resources on Japanese romanisation.">日本語のローマ字表記に関する規則、事例、比較資料。</p>
           <a href="#">View resources →</a>
         </article>
         <article class="card">
           <span class="card-no">02</span>
           <h3>Word Segmentation</h3>
-          <p>分かち書きの判断、検索語との関係、実装上の論点。</p>
+          <p data-ja="分かち書きの判断、検索語との関係、実装上の論点。" data-en="Segmentation decisions, their relation to search terms, and implementation issues.">分かち書きの判断、検索語との関係、実装上の論点。</p>
           <a href="#">View resources →</a>
         </article>
         <article class="card">
           <span class="card-no">03</span>
           <h3>Metadata Practice</h3>
-          <p>目録・典拠・識別子・相互運用性に関する実践資料。</p>
+          <p data-ja="目録・典拠・識別子・相互運用性に関する実践資料。" data-en="Practical resources on cataloguing, authority control, identifiers, and interoperability.">目録・典拠・識別子・相互運用性に関する実践資料。</p>
           <a href="#">View resources →</a>
         </article>
       </div>
@@ -90,30 +93,30 @@
     <section id="activities" class="section section-blue">
       <div class="section-heading inverse">
         <p class="kicker">Activities</p>
-        <h2>クロストークの活動</h2>
-        <p>イベント、議論、事例共有を通じて、現場の課題を共同で整理します。</p>
+        <h2 data-ja="クロストークの活動" data-en="CrossTalk Activities">クロストークの活動</h2>
+        <p data-ja="イベント、議論、事例共有を通じて、現場の課題を共同で整理します。" data-en="Through events, discussion, and shared case studies, we work through real-world issues together.">イベント、議論、事例共有を通じて、現場の課題を共同で整理します。</p>
       </div>
 
       <div class="timeline">
         <article>
           <time datetime="2026">Kick-off</time>
           <div>
-            <h3>キックオフ・クロストーク</h3>
-            <p>ローマ字表記と分かち書きを、図書館・研究・システムの視点から横断的に議論。</p>
+            <h3 data-ja="キックオフ・クロストーク" data-en="Kick-off CrossTalk">キックオフ・クロストーク</h3>
+            <p data-ja="ローマ字表記と分かち書きを、図書館・研究・システムの視点から横断的に議論。" data-en="A cross-perspective discussion of romanisation and word segmentation from library, research, and systems viewpoints.">ローマ字表記と分かち書きを、図書館・研究・システムの視点から横断的に議論。</p>
           </div>
         </article>
         <article>
           <time datetime="2026">Case studies</time>
           <div>
-            <h3>事例共有</h3>
-            <p>各機関の目録・ディスカバリー・デジタルコレクションの事例を紹介。</p>
+            <h3 data-ja="事例共有" data-en="Case Studies">事例共有</h3>
+            <p data-ja="各機関の目録・ディスカバリー・デジタルコレクションの事例を紹介。" data-en="Case studies from institutions on cataloguing, discovery, and digital collections.">各機関の目録・ディスカバリー・デジタルコレクションの事例を紹介。</p>
           </div>
         </article>
         <article>
           <time datetime="2026">Working notes</time>
           <div>
-            <h3>共同ノート</h3>
-            <p>議論から見えてきた論点、用語、参考資料を継続的に蓄積。</p>
+            <h3 data-ja="共同ノート" data-en="Working Notes">共同ノート</h3>
+            <p data-ja="議論から見えてきた論点、用語、参考資料を継続的に蓄積。" data-en="An ongoing record of issues, terminology, and references arising from discussion.">議論から見えてきた論点、用語、参考資料を継続的に蓄積。</p>
           </div>
         </article>
       </div>
@@ -122,16 +125,16 @@
     <section id="links" class="section section-light">
       <div class="section-heading">
         <p class="kicker">Links</p>
-        <h2>関連リンク</h2>
-        <p>EAJRS、およびセッションに関連する外部リソースへの入口です。</p>
+        <h2 data-ja="関連リンク" data-en="Related Links">関連リンク</h2>
+        <p data-ja="EAJRS、およびセッションに関連する外部リソースへの入口です。" data-en="Entry points to EAJRS and other resources related to this session.">EAJRS、およびセッションに関連する外部リソースへの入口です。</p>
       </div>
 
       <div class="link-list">
         <a href="https://www.eajrs.net/" target="_blank" rel="noopener">
           <span>EAJRS</span><small>European Association of Japanese Resource Specialists</small>
         </a>
-        <a href="#"><span>Standards & Guidelines</span><small>Romanization / metadata standards</small></a>
-        <a href="#"><span>Related Projects</span><small>関連プロジェクト・ワーキンググループ</small></a>
+        <a href="#"><span>Standards &amp; Guidelines</span><small>Romanisation / metadata standards</small></a>
+        <a href="#"><span>Related Projects</span><small data-ja="関連プロジェクト・ワーキンググループ" data-en="Related projects and working groups">関連プロジェクト・ワーキンググループ</small></a>
       </div>
     </section>
   </main>
@@ -139,7 +142,7 @@
   <footer class="site-footer">
     <img src="assets/logo.png" alt="" />
     <div>
-      <strong>翻字のその先へ</strong>
+      <strong data-ja="翻字のその先へ" data-en="Beyond Transliteration">翻字のその先へ</strong>
       <p>EAJRS CrossTalk Session</p>
     </div>
     <p class="copyright">© EAJRS — website mockup</p>
@@ -153,6 +156,25 @@
       toggle.setAttribute('aria-expanded', String(!open));
       nav.classList.toggle('open');
     });
+
+    const langToggle = document.getElementById('lang-toggle');
+    const translatable = document.querySelectorAll('[data-ja][data-en]');
+
+    function applyLang(lang) {
+      document.documentElement.lang = lang;
+      translatable.forEach((el) => { el.innerHTML = el.dataset[lang]; });
+      langToggle.querySelectorAll('.lang-option').forEach((span) => {
+        span.classList.toggle('active', span.dataset.lang === lang);
+      });
+      localStorage.setItem('eajrs-lang', lang);
+    }
+
+    langToggle.addEventListener('click', () => {
+      const current = document.documentElement.lang === 'en' ? 'en' : 'ja';
+      applyLang(current === 'ja' ? 'en' : 'ja');
+    });
+
+    applyLang(localStorage.getItem('eajrs-lang') === 'en' ? 'en' : 'ja');
   </script>
 </body>
 </html>
