@@ -45,27 +45,38 @@ HTML
 
 イベント記録や資料などの本文は Markdown で記述する。
 
+以下を人間が編集する一次データとする。
+
 ```text
 content/
+├── ja/
+└── en/
 ```
-
-以下を人間が編集する一次データとする。
 
 ### Publication
 
 Markdown から静的 HTML を生成し、GitHub Pages で公開する。
+
+現在の GitHub Pages project site は、
+
+```text
+https://eajrs-crosstalk.github.io/home/
+```
+
+をベース URL としている。
+
+ルートの `index.html` は現在の bilingual なランディングページとして維持し、長文コンテンツを `/ja/` と `/en/` 以下に配置する。
 
 各コンテンツには可能な限り安定した URL を与える。
 
 例：
 
 ```text
-/activities/2026-kickoff/
-/activities/2026-romanisation/
+/home/ja/activities/2026-kickoff/
+/home/en/activities/2026-kickoff/
 
-/resources/romanisation/
-/resources/word-segmentation/
-/resources/metadata-practice/
+/home/ja/resources/romanisation/
+/home/en/resources/romanisation/
 ```
 
 ### PDF
@@ -88,49 +99,54 @@ HTML
 
 ## 3. Proposed File Structure
 
-静的サイトジェネレーターの導入を前提として、以下のような構造を想定する。
+公開サイトでは、現在の GitHub Pages の構成を維持し、**repository root の `index.html` をトップページとして残す**。
+
+トップページは現在と同様に日本語・英語の入口として機能させる。
+
+イベント記録や Resources などの長文コンテンツについては、ルート直下の `ja/` および `en/` 以下に配置する。
+
+公開される基本構造は次のようにする。
 
 ```text
 home/
 │
+├── index.html                 # トップページ（日英切替）
+├── styles.css                 # トップページおよび共通スタイル
 ├── README.md
-├── package.json
-├── .gitignore
 │
-├── content/
+├── ja/
+│   ├── activities/
+│   │   ├── index.html         # 日本語 Activities 一覧
+│   │   ├── 2026-kickoff/
+│   │   │   └── index.html
+│   │   ├── 2026-romanisation/
+│   │   │   └── index.html
+│   │   └── ...
 │   │
-│   ├── ja/
-│   │   ├── activities/
-│   │   │   ├── 2026-kickoff.md
-│   │   │   ├── 2026-romanisation.md
-│   │   │   └── ...
-│   │   │
-│   │   └── resources/
-│   │       ├── romanisation.md
-│   │       ├── word-segmentation.md
-│   │       └── metadata-practice.md
+│   └── resources/
+│       ├── index.html         # 日本語 Resources 一覧
+│       ├── romanisation/
+│       │   └── index.html
+│       ├── word-segmentation/
+│       │   └── index.html
+│       └── ...
+│
+├── en/
+│   ├── activities/
+│   │   ├── index.html         # English Activities index
+│   │   ├── 2026-kickoff/
+│   │   │   └── index.html
+│   │   ├── 2026-romanisation/
+│   │   │   └── index.html
+│   │   └── ...
 │   │
-│   └── en/
-│       ├── activities/
-│       │   ├── 2026-kickoff.md
-│       │   ├── 2026-romanisation.md
-│       │   └── ...
-│       │
-│       └── resources/
-│           ├── romanisation.md
-│           ├── word-segmentation.md
-│           └── metadata-practice.md
-│
-├── layouts/
-│   ├── base.html
-│   ├── activity.html
-│   └── resource.html
-│
-├── includes/
-│   ├── header.html
-│   ├── footer.html
-│   ├── language-switcher.html
-│   └── print-button.html
+│   └── resources/
+│       ├── index.html         # English Resources index
+│       ├── romanisation/
+│       │   └── index.html
+│       ├── word-segmentation/
+│       │   └── index.html
+│       └── ...
 │
 ├── assets/
 │   ├── images/
@@ -138,25 +154,109 @@ home/
 │   └── documents/
 │
 ├── css/
-│   ├── styles.css
 │   └── print.css
 │
-├── js/
-│   └── main.js
-│
-└── _site/
-    ├── index.html
-    │
-    ├── ja/
-    │   ├── activities/
-    │   └── resources/
-    │
-    └── en/
-        ├── activities/
-        └── resources/
+└── js/
+    └── main.js
 ```
 
-`_site/` は自動生成される公開用ファイルであり、基本的に直接編集しない。
+これにより、公開 URL は以下のようになる。
+
+```text
+# Top
+https://eajrs-crosstalk.github.io/home/
+
+# Activities
+https://eajrs-crosstalk.github.io/home/ja/activities/
+https://eajrs-crosstalk.github.io/home/en/activities/
+
+# Individual activity
+https://eajrs-crosstalk.github.io/home/ja/activities/2026-kickoff/
+https://eajrs-crosstalk.github.io/home/en/activities/2026-kickoff/
+
+# Resources
+https://eajrs-crosstalk.github.io/home/ja/resources/
+https://eajrs-crosstalk.github.io/home/en/resources/
+
+# Individual resource
+https://eajrs-crosstalk.github.io/home/ja/resources/romanisation/
+https://eajrs-crosstalk.github.io/home/en/resources/romanisation/
+```
+
+### Source and Published Files
+
+Markdown を導入した場合、人間が編集する source と、GitHub Pages で公開される HTML は分離して考える。
+
+例えば source は以下のように管理する。
+
+```text
+content/
+├── ja/
+│   ├── activities/
+│   │   ├── 2026-kickoff.md
+│   │   └── 2026-romanisation.md
+│   │
+│   └── resources/
+│       ├── romanisation.md
+│       └── word-segmentation.md
+│
+└── en/
+    ├── activities/
+    │   ├── 2026-kickoff.md
+    │   └── 2026-romanisation.md
+    │
+    └── resources/
+        ├── romanisation.md
+        └── word-segmentation.md
+```
+
+Static Site Generator はこれらを公開用 HTML に変換する。
+
+```text
+content/ja/activities/2026-kickoff.md
+                │
+                ▼
+        Static Site Generator
+                │
+                ▼
+ja/activities/2026-kickoff/index.html
+```
+
+したがって、**source のディレクトリ構造と公開サイトのディレクトリ構造は必ずしも同一である必要はない**。
+
+重要なのは、公開 URL の構造を安定させることである。
+
+### GitHub Pages Base Path
+
+この repository は GitHub Pages の project site として `/home/` 以下で公開される。
+
+そのため、サイト内部でルート相対 URL を使用する際には注意が必要である。
+
+例えば、
+
+```html
+<a href="/ja/activities/">
+```
+
+とすると、
+
+```text
+https://eajrs-crosstalk.github.io/ja/activities/
+```
+
+を指すことになり、`/home/` が欠落する。
+
+実際の公開先は、
+
+```text
+https://eajrs-crosstalk.github.io/home/ja/activities/
+```
+
+である。
+
+そのため Static Site Generator を導入する際には、`/home/` を **base path** として扱える構成にする。
+
+テンプレート内に `/home/` を無数にハードコードすることは避け、base URL / path を設定として一元管理することが望ましい。
 
 ---
 
@@ -221,7 +321,7 @@ title: "EAJRS CrossTalk Kickoff Meeting"
 date: 2026-01-15
 type: activity
 lang: en
-translation: /ja/activities/2026-kickoff/
+translation: /home/ja/activities/2026-kickoff/
 ---
 
 # EAJRS CrossTalk Kickoff Meeting
@@ -265,26 +365,26 @@ status
 
 ## 6. Multilingual Content
 
-トップページのような短い UI については JavaScript による言語切替も利用できる。
+トップページのような短い UI については、現在の JavaScript による言語切替を維持できる。
 
 一方、イベント記録や Resources のような長文コンテンツについては、日本語と英語を独立した Markdown 文書として管理する。
 
 ```text
 content/
-  ja/
-    activities/
-      2026-kickoff.md
-
-  en/
-    activities/
-      2026-kickoff.md
+├── ja/
+│   └── activities/
+│       └── 2026-kickoff.md
+│
+└── en/
+    └── activities/
+        └── 2026-kickoff.md
 ```
 
 公開 URL も言語ごとに分離する。
 
 ```text
-/ja/activities/2026-kickoff/
-/en/activities/2026-kickoff/
+/home/ja/activities/2026-kickoff/
+/home/en/activities/2026-kickoff/
 ```
 
 各ページには対応する翻訳ページへのリンクを表示する。
@@ -430,6 +530,16 @@ Markdown から HTML を生成するため、Static Site Generator の導入を�
 
 サイトが大規模な Web application になる予定はないため、React 等のクライアントサイドフレームワークは基本的に必要ない。
 
+Eleventy を導入する場合も、現在のトップページの URL、
+
+```text
+https://eajrs-crosstalk.github.io/home/
+```
+
+は変更しない。
+
+また `/home/` が GitHub Pages 上の base path であることをビルド設定に反映し、開発環境と GitHub Pages の双方でリンクが正しく機能するようにする。
+
 ---
 
 ## 10. GitHub Workflow
@@ -479,6 +589,21 @@ PDF は補助的な出力形式とする。
 ### Stable URLs
 
 一度公開したコンテンツの URL は可能な限り変更しない。
+
+特に、
+
+```text
+/home/{lang}/{content-type}/{slug}/
+```
+
+を基本的な URL パターンとして維持する。
+
+例：
+
+```text
+/home/ja/activities/2026-kickoff/
+/home/en/resources/romanisation/
+```
 
 ### Content first
 
