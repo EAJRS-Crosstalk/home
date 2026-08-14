@@ -402,6 +402,22 @@ content/
 
 翻訳が存在しないページについては、無理に空の翻訳ページを作らない。
 
+### トップページから下位ページへのリンク
+
+トップページ (`index.html`) は `data-ja` / `data-en` 属性と JavaScript による言語切替（URL は変わらない）を採用している。一方、Activities・Resources などの下位ページは言語ごとに独立した URL (`ja/activities/`, `en/activities/` など) を持つ。
+
+この2つの方式を橋渡しするため、下位ページへのリンクには `data-href-ja` / `data-href-en` 属性を付与し、既存の `applyLang(lang)` 内でテキスト置換と同様に `href` も書き換える。
+
+```html
+<a data-href-ja="ja/activities/" data-href-en="en/activities/" href="ja/activities/">
+  Activitiesを見る
+</a>
+```
+
+- `href` の初期値には日本語版の URL を設定する。JavaScript が無効な環境でも最低限リンクが機能するようにするため。
+- 対象は下位ページへ実際に遷移するリンク（hero 内のボタン、Resources カードなど）。トップページ内のセクションへ移動するだけの nav アンカー（`#activities` など）は対象外とし、現状のまま維持する。
+- 下位ページの実体がまだ存在しない場合でも、`href` には計画上の正式な URL（本ドキュメント 3章の URL パターンに従うもの）を先に設定してよい。実体ができるまでは 404 になるが、URL 設計とリンクの仕組みを先に確定させることを優先する。
+
 ---
 
 ## 7. HTML Structure

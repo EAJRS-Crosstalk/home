@@ -47,8 +47,8 @@
             そしてメタデータの相互運用性を横断して考えるクロストークセッションです。
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#activities" data-ja="Activitiesを見る" data-en="View Activities">Activitiesを見る</a>
-            <a class="button ghost" href="#resources" data-ja="Resourcesへ" data-en="Go to Resources">Resourcesへ</a>
+            <a class="button primary" href="ja/activities/" data-href-ja="ja/activities/" data-href-en="en/activities/" data-ja="Activitiesを見る" data-en="View Activities">Activitiesを見る</a>
+            <a class="button ghost" href="ja/resources/" data-href-ja="ja/resources/" data-href-en="en/resources/" data-ja="Resourcesへ" data-en="Go to Resources">Resourcesへ</a>
           </div>
         </div>
       </div>
@@ -106,19 +106,19 @@
           <span class="card-no">01</span>
           <h3>Romanisation</h3>
           <p data-ja="日本語のローマ字表記に関する規則、事例、比較資料。" data-en="Rules, examples, and comparative resources on Japanese romanisation.">日本語のローマ字表記に関する規則、事例、比較資料。</p>
-          <a href="#">View resources →</a>
+          <a href="ja/resources/romanisation/" data-href-ja="ja/resources/romanisation/" data-href-en="en/resources/romanisation/">View resources →</a>
         </article>
         <article class="card">
           <span class="card-no">02</span>
           <h3>Word Segmentation</h3>
           <p data-ja="分かち書きの判断、検索語との関係、実装上の論点。" data-en="Segmentation decisions, their relation to search terms, and implementation issues.">分かち書きの判断、検索語との関係、実装上の論点。</p>
-          <a href="#">View resources →</a>
+          <a href="ja/resources/word-segmentation/" data-href-ja="ja/resources/word-segmentation/" data-href-en="en/resources/word-segmentation/">View resources →</a>
         </article>
         <article class="card">
           <span class="card-no">03</span>
           <h3>Metadata Practice</h3>
           <p data-ja="目録・典拠・識別子・相互運用性に関する実践資料。" data-en="Practical resources on cataloguing, authority control, identifiers, and interoperability.">目録・典拠・識別子・相互運用性に関する実践資料。</p>
-          <a href="#">View resources →</a>
+          <a href="ja/resources/metadata-practice/" data-href-ja="ja/resources/metadata-practice/" data-href-en="en/resources/metadata-practice/">View resources →</a>
         </article>
       </div>
     </section>
@@ -160,10 +160,12 @@
 
     const langToggle = document.getElementById('lang-toggle');
     const translatable = document.querySelectorAll('[data-ja][data-en]');
+    const linkable = document.querySelectorAll('[data-href-ja][data-href-en]');
 
     function applyLang(lang) {
       document.documentElement.lang = lang;
       translatable.forEach((el) => { el.innerHTML = el.dataset[lang]; });
+      linkable.forEach((el) => { el.href = el.dataset[lang === 'en' ? 'hrefEn' : 'hrefJa']; });
       langToggle.querySelectorAll('.lang-option').forEach((span) => {
         span.classList.toggle('active', span.dataset.lang === lang);
       });
